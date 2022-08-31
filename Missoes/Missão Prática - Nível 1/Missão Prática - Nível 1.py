@@ -3,7 +3,7 @@
 primos=[]
 n = int(input("Digite um valor: "))
 
-for x in range (1,n):
+for x in range (2,n):
     cont=0
     
     for y in range(1, x+1):
