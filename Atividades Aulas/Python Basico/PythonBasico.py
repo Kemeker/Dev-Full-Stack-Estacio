@@ -1,12 +1,11 @@
 # ATIVIDADE CORRESPONDE AO TEMA PYTHON BASICO DO NIVEL 2 - PRIMEIRO SEMESTRE (1ª MUNDO)
+def taximetro(distancia, multiplicador=1):
+    largada = 3
+    km_rodado = 6
+    valor = (largada + distancia * 
+    km_rodado) * multiplicador
+    return valor
 
-from decimal import Decimal
 
-
-def decimal_para_binario(decimal):
-    binario = ''	
-3	while Decimal > 0:
-4		binario+= str(decimal%2)
-5		decimal//= 2
-6	return binario[::-1]	
-
+pagamento = taximetro(3.5)
+print(pagamento)
