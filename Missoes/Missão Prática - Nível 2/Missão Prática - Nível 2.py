@@ -18,6 +18,8 @@ print(f"O número {numero_digitado}, quando convertido em binário vale: {binari
 
 
 
+
+
 # OUTRA MANEIRAS MAIS SIMPLES 
 """
 n = int(input("Entre com um numero: "))
