@@ -2,13 +2,14 @@
 #n é o numero de elementos de  um  conjunto
 
 
-
+import math
 
 #conjunto = {0,1,2,3,4,5}
 
-# elementosDoConjunto = 
+
 
 #somaConjunto = []
+
 
 cont = 0
 while cont < 6:
@@ -17,4 +18,4 @@ while cont < 6:
 
     
 soma = 2 ** cont
-print(soma)   
+print(soma)
