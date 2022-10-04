@@ -21,11 +21,10 @@ print(f"O número {numero_digitado}, quando convertido em binário vale: {binari
 
 
 # OUTRA MANEIRAS MAIS SIMPLES 
-"""
-n = int(input("Entre com um numero: "))
-n = bin(n)
-print("O numero convertido em binario é: ",n[2::])
-"""
+#n = int(input("Entre com um numero: "))
+#n = bin(n)
+#print("O numero convertido em binario é: ",n[2::])
+
 
 
 #OUTRA MANEIRA DE FAZER A CONVERSAO
@@ -35,5 +34,8 @@ binaria = "{0:b}" .format(decimal)
 print(f"Numero convertido para base binária: {binaria}")
 
 """
+
+
+
 
 

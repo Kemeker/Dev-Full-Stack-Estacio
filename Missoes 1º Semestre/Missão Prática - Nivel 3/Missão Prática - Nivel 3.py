@@ -1,3 +1,4 @@
+
 def subconjutos(numeros):
     return subconjutos_recursivo([], sorted(numeros))
 
@@ -11,3 +12,4 @@ resultado = subconjutos(numeros)
 
 print(f"O numero de elementos do conjunto {numeros} é: {len(resultado)}")
 print(f"As partes do conjunto {numeros} são: {resultado}")
+
