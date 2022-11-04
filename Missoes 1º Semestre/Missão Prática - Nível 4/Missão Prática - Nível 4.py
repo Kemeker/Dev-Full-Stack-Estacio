@@ -87,6 +87,14 @@ print("A Tabela de gastos foi a seguinte: ")
 print(tabela_gastos)
 print(lista)
 
+plt.plot(despesa_alimentacao, label='Despesa Alimenteçao')
+plt.plot(despesa_transporte, label= 'Despesas Trabsporte')
+plt.plot(despesa_vestuario, label='Despesas Vestuario')
 
+plt.title('Grafico de Despesas')
+plt.ylabel("Despesas em R$")
+plt.xlabel("Dias")
+plt.legend()
+plt.show()
 
 
