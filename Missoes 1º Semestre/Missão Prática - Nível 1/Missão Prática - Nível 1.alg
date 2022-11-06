@@ -1,5 +1,5 @@
-// ATIVIDADE REALIZADA EM VISUALG
-"""
+'''--------------Atividade entregue em VISUALG------------'''
+
 Algoritmo "Missão Prática - Nível 1"
 
 Var
@@ -29,6 +29,6 @@ Inicio
      
 
 Fimalgoritmo
-"""
+
 
 
