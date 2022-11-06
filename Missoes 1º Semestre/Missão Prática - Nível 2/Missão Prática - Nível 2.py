@@ -1,7 +1,7 @@
 #converter um nummero da base decial para  a base binaria
 
-#ATIVIDADE VALIDA PARA MISSAO NIVEL 2
 
+'''------------Convertendo Numero decimal em binario-----'''
 n = int(input("Digite um numero da base decimal: "))
 numero_digitado = n
 quociente = 1
@@ -20,14 +20,14 @@ print(f"O número {numero_digitado}, quando convertido em binário vale: {binari
 
 
 
-# OUTRA MANEIRAS MAIS SIMPLES 
+'''----------Outra forma -----------------------------'''
 #n = int(input("Entre com um numero: "))
 #n = bin(n)
 #print("O numero convertido em binario é: ",n[2::])
 
 
 
-#OUTRA MANEIRA DE FAZER A CONVERSAO
+'''----------Outra forma de realizar a mesma atividade---------'''
 """"
 decimal = int(input("Digite um numero decimmal: "))
 binaria = "{0:b}" .format(decimal)

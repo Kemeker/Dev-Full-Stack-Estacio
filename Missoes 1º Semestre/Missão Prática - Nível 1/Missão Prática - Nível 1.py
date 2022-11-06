@@ -1,4 +1,6 @@
-# Atividade realizada em python porem nao ficou 100%
+
+
+'''-----------Apresentando os numeros primos da entrada--------'''
 
 primos=[]
 n = int(input("Digite um valor: "))
