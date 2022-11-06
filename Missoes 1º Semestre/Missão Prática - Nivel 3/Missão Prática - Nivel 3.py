@@ -1,5 +1,7 @@
 
+'''---------------------------Funçao para calcular os Subconjuntos---------------------------'''
 def subconjutos(numeros):
+       
     return subconjutos_recursivo([], sorted(numeros))
 
 def subconjutos_recursivo(atual, conjunto):
@@ -7,6 +9,7 @@ def subconjutos_recursivo(atual, conjunto):
         return subconjutos_recursivo(atual, conjunto[1:]) + subconjutos_recursivo(atual + [conjunto[0]], conjunto[1:])
     return [atual]  
 
+'''----------------------------------Entrada de dados-----------------------------'''
 numeros = [1,2,3]
 resultado = subconjutos(numeros)
 
