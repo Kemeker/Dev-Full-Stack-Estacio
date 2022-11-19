@@ -13,7 +13,7 @@ dados_aleatorios = Faker('pt_BR')
 lista_dados = []
 lista_notas = []
 lista_nomes = []
-n = int(input(f'Digite o número de pessoas: '))
+
 
 
 '''-------------------------Gravando e Criando Arquivo-------------------------------------------'''
@@ -30,9 +30,9 @@ with open('Dados.txt', 'w', encoding='utf-8') as arquivo:
 
 
 '''----------------------------Lendo arquivo e recuperando---------------------------------------------------------'''
-with open('Dados.txt', 'r', encoding='utf-8') as recuperar:
-    for i in range (n):
-        ler = recuperar.readline() # lendo as linhas do arquivo
+with open('Dados.txt', 'r', encoding='utf-8') as arquivo_recuperar:
+    for i in range (len(lista_dados)):
+        ler = arquivo_recuperar.readline() # lendo as linhas do arquivo
         separar_notas = ler.split(' ')# separado nomes das notas
         nota = int(separar_notas[-1])# Convertendo as notas em numeros inteiros
         lista_notas.append(nota) # Colocando as notas em uma lista 
@@ -48,13 +48,13 @@ plt.title('Histograma das Pontuações')
 plt.xlabel('Pontuações')
 plt.ylabel('Probabilidade')
 plt.xlim(-0.5,10.5) 
-plt.hist(lista_notas, bins=np.arange(-0.5,11), density=True, align="mid", rwidth=0.9) 
+plt.hist(lista_notas, bins=np.arange(-0.5,11), density=True, rwidth=0.75) 
 plt.show()
 
 
 '''----------------------------------Nuvem de Palavras--------------------------------------------'''
 
-nuvem_palavras = WordCloud(background_color='Black', width=800,height=800).generate(lista_nome_str)
+nuvem_palavras = WordCloud(background_color='Black', width=600,height=400).generate(lista_nome_str)
 plt.imshow(nuvem_palavras, interpolation='bilinear')
 plt.axis("off")
 plt.show()
