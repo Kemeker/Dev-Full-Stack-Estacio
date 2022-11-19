@@ -59,3 +59,5 @@ plt.imshow(nuvem_palavras, interpolation='bilinear')
 plt.axis("off")
 plt.show()
 nuvem_palavras.to_file("Nuvem de palavras.png")
+nuvem_palavras.to_file("Nuvem de palavras.png")
+

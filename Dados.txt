@@ -1,0 +1,20 @@
+Aluno: Bryan Porto - Nota: 8
+Aluno: Alexia Nogueira - Nota: 4
+Aluno: Kamilly da Mata - Nota: 5
+Aluno: Pedro da Mota - Nota: 10
+Aluno: Giovanna Lopes - Nota: 1
+Aluno: Emilly da Mata - Nota: 4
+Aluno: Joaquim Ramos - Nota: 8
+Aluno: Srta. Lara Mendes - Nota: 6
+Aluno: Davi Lucca Moura - Nota: 3
+Aluno: Yuri da Rosa - Nota: 5
+Aluno: Juan Cunha - Nota: 7
+Aluno: Julia da Paz - Nota: 6
+Aluno: Anthony da Rosa - Nota: 3
+Aluno: Enzo Fernandes - Nota: 8
+Aluno: Vitor Hugo Moraes - Nota: 9
+Aluno: Alexia Fogaça - Nota: 5
+Aluno: Bruno Cavalcanti - Nota: 9
+Aluno: Otávio Gonçalves - Nota: 9
+Aluno: João Vitor Costela - Nota: 9
+Aluno: João Miguel Teixeira - Nota: 9
