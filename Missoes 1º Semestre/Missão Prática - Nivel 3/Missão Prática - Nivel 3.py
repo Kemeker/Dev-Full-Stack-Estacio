@@ -10,9 +10,27 @@ def subconjutos_recursivo(atual, conjunto):
     return [atual]  
 
 '''----------------------------------Entrada de dados-----------------------------'''
-numeros = [1,2,3]
-resultado = subconjutos(numeros)
+item = 'digite o numero ou string que deseja calcular'
+lista = []
+lista_falsa = []
+contador = 0
+while True:
+    escreva = input(f'digite o item da posição {contador+1}: ')
+    if escreva == '': break # quando nao digitar um item que deseja adicionar ao seu conjuto ele para e calcula 
+    try:
+        item = int(escreva)
+    except ValueError:
+        item = escreva
+    lista.append(item)
+    lista_falsa.append(contador)
+    contador +=1
 
-print(f"O numero de elementos do conjunto {numeros} é: {len(resultado)}")
-print(f"As partes do conjunto {numeros} são: {resultado}")
+resultado = subconjutos(lista_falsa)
 
+'''----------------------troca dos valores da lista com lista falsa----------------'''
+for posicao_lista in range(len(resultado)):
+    for posicao_numero in range(len(resultado[posicao_lista])):
+        resultado[posicao_lista][posicao_numero] = lista[posicao_numero]
+
+print(f"O numero de elementos do conjunto {lista} é: {len(resultado)}")
+print(f"As partes do conjunto {lista} são: {resultado}")
