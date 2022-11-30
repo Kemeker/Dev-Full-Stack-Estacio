@@ -88,8 +88,7 @@ grafico = Grafico(lista_despesas)
 
 
 '''Regressao Linear'''
-id_despesa = 0 # ID da despesa
+id_despesa = 1 # ID da despesa
 grafico.regressao_linear(id_despesa)
-
 
 
