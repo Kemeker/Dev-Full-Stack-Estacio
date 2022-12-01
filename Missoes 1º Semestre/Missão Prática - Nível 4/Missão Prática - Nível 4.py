@@ -3,6 +3,18 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 
+
+
+'''------------------------Classe Dicionario-----------------------------------------'''
+class Dicionario:
+
+    def __init__(self, dicionario, cor, nome):
+        self.dicionario = dicionario
+        self.cor=cor
+        self.nome = nome
+
+
+
 '''------------------------Classe Grafico--------------------------------------------'''
 class Grafico:  
   def __init__(self, lista_despesas):
@@ -56,18 +68,6 @@ class Grafico:
     plt.legend()
     plt.show()
 
-
-
-'''------------------------Classe Dicionario-----------------------------------------'''
-class Dicionario:
-
-    def __init__(self, dicionario, cor, nome):
-        self.dicionario = dicionario
-        self.cor=cor
-        self.nome = nome
-
-
-
 '''----------------------------Dados dos gastos---------------------------------------'''
 
 '''ID  0'''
@@ -81,6 +81,11 @@ despesa_vestuario = Dicionario({1:100,2:50,3:45,4:90,5:150},'olive','Vestuario')
 
 
 lista_despesas = [despesa_alimentacao,despesa_transporte,despesa_vestuario]
+
+
+
+
+
 
 '''Grafico de Desempenho'''
 grafico = Grafico(lista_despesas)
