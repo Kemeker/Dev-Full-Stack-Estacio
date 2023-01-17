@@ -1,0 +1,12 @@
+root {
+    --cor-bg: #e9967a;
+}
+body { 
+    background-color: var(--cor-bg);
+}
+
+.logotipo {
+    width: 50px;
+
+
+}
