@@ -1,0 +1,15 @@
+
+
+:root {
+    --bg-color:  #e9967a;
+}
+
+
+body{
+    background-color: var(--bg-color);
+}
+
+aside {
+    display: flex;
+    justify-content:space-around ;
+}

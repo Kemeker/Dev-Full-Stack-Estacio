@@ -7,8 +7,6 @@
 
 :root {
     --bg-color:  #e9967a;
-
-    
 }
 
 body { 
@@ -24,19 +22,21 @@ main {
     margin: 230px;
 }
 .TextoPrincipal{
+    justify-content: center;
     display: flex;
 }
 
 
  h1{
     text-align: center;
-    font-size: 60px;
+    font-size: 50px;
  }
 
 
 .logotipo {
     
-    width: 60px;
+    width: 50px;
+    height: 50px;
 
 
 }
