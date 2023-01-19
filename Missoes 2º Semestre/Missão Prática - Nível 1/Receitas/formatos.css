@@ -1,14 +1,54 @@
 * {
-    border: 1px solid red;
+    
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --bg-color:  #e9967a;
+
+    
 }
 
 body { 
-    display: flex;
-    background-color: #e9967a;
+    
+    background-color: var(--bg-color)
 }
 
-.logotipo {
-    width: 50px;
 
+
+main {
+    
+    text-align: center;
+    margin: 230px;
+}
+.TextoPrincipal{
+    display: flex;
+}
+
+
+ h1{
+    text-align: center;
+    font-size: 60px;
+ }
+
+
+.logotipo {
+    
+    width: 60px;
+
+
+}
+footer{
+    background-color: black;
+    color: white;
+    font-size: 30px;
+    text-align: center;
+    bottom: 0px;
+    width: 100%;
+    height: 30px;
+    position: absolute;
+    
 
 }
