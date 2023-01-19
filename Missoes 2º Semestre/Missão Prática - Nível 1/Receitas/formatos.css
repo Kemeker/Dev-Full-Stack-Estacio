@@ -1,8 +1,10 @@
-root {
-    --cor-bg: #e9967a;
+* {
+    border: 1px solid red;
 }
+
 body { 
-    background-color: var(--cor-bg);
+    display: flex;
+    background-color: #e9967a;
 }
 
 .logotipo {
