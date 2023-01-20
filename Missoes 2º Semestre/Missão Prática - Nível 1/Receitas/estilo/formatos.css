@@ -13,6 +13,7 @@ body {
     
     background-color: var(--bg-color)
 }
+
 .titulo{
     justify-content: center;
     display: flex;

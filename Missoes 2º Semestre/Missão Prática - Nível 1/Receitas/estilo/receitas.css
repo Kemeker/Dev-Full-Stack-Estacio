@@ -26,3 +26,6 @@ aside {
     background-color: var(--bg-color-divs);
 }
 
+main img {
+    width: 100%;
+}
