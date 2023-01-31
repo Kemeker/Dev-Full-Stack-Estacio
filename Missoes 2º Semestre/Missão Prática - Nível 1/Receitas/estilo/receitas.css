@@ -2,7 +2,7 @@
 
 :root {
     --bg-color:  #e9967a;
-    --bg-color-divs: #f9fad2;
+    --bg-color-card: #f9fad2;
 }
 
 
@@ -39,7 +39,9 @@ body{
     background-color: var(--bg-color-divs);
 }
 
-
+.card{
+    background-color: var(--bg-color-card);
+}
 
 
 footer>p{
@@ -52,3 +54,4 @@ footer>p{
     height: 30px;
     position: absolute;
 }
+
