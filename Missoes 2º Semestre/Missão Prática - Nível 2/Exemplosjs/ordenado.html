@@ -4,19 +4,88 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <script src="ordenando.js"></script>
+    <title>Orddenando</title>
 </head>
-<body style="background-color: black;">
+<body>
+    <style>
+        body{
+            background-color: rgb(31, 107, 56);
+        }
+        button{
+            background-color: blue;
+        }
+    </style>
     <main>
+        <h1>Orddenando Valores</h1>
         <div>
-            <input type="text" id="valor">
-        </div>    
-        <button>Adicionar</button>
-        <div>
-            <input type="text">
+            <input type="number" id="valor" />
         </div>
+        <div>
+            <button onclick="add()">Adicionar</button>
+        </div>
+        <select id="tipoOrdenacao">
+            <option value="bubbleSort">Bubble Sort</option>
+            <option value="selectionSort">Selection Sort</option>
+            <option value="quickSort">Quick Sort</option>
+        </select>
+        <div>
+            <button onclick="ordenar()">Ordenar</button>
+            <button onclick="misturar()">Misturar</button> 
+        </div>
+        <div>
+            <ul id="valores"></ul>
+        </div>
+
+
     </main>
     
+    <script>
+        function add(){
+            const input = document.getElementById("valor");
+            const lista = document.getElementById("valores");
+            const node = document.createElement("li");
+            const textNode = document.createTextNode(input.value);
+            node.appendChild(textNode);
+            lista.appendChild(node);
+        
+        }
+
+        function ordenar() {
+            const lista = document.getElementById("valores");
+            const tipoOrdenacao = document.getElementById("tipoOrdenacao");
+            const itens = Array.from(lista.children);
+            const valores = itens.map(item => parseInt(item.innerHTML));
+            let algoritmoOrdenacao;
+            switch (tipoOrdenacao.selectedIndex) {
+                case 0:
+                algoritmoOrdenacao = bubbleSort;
+                break;
+                case 1:
+                algoritmoOrdenacao = selectionSort;
+                break;
+                case 2:
+                algoritmoOrdenacao = quickSort;
+                break;
+                default:
+                algoritmoOrdenacao = bubbleSort;
+            }
+            algoritmoOrdenacao(valores);
+            lista.innerHTML = valores
+                .map(valor => `<li>${valor}</li>`)
+                .reduce((acumulador, item) => acumulador + item, "");
+        }
+
+        function misturar() {
+            const lista = document.getElementById("valores");
+            const itens = Array.from(lista.children);
+            const valores = itens.map(item => parseInt(item.innerHTML));
+            shuffle(valores);
+            lista.innerHTML = valores
+                .map(valor => `<li>${valor}</li>`)
+                .reduce((acumulador, item) => acumulador + item, "");
+        } 
+    </script>
+    
 </body>
-<script src="ordenando.js"></script>
 </html>
