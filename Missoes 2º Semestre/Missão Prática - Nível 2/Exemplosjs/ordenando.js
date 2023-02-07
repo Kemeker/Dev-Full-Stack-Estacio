@@ -1,57 +1,57 @@
-const swap = (arr, i, j) => [arr[i], arr[j]] = [arr[j], arr[i]];
-
-const shuffle = (arr, n) => {
-    for (let i = 0; i < n; i++) {
-        let j = Math.floor(Math.random() * arr.length);
-        swap(arr, i, j);
+const swap = (vector, pos1, pos2) => {
+    [vector[pos1], vector[pos2]] = [vector[pos2], vector[pos1]];
+  };
+  
+  const shuffle = (vector, swaps) => {
+    for (let i = 0; i < swaps; i++) {
+      let pos1 = Math.floor(Math.random() * vector.length);
+      let pos2 = Math.floor(Math.random() * vector.length);
+      swap(vector, pos1, pos2);
     }
-    return arr;
-};
-
-const bubbleSort = arr => {
-    for (let i = 0; i < arr.length; i++) {
-        for (let j = 0; j < arr.length - i - 1; j++) {
-            if (arr[j] > arr[j + 1]) {
-                swap(arr, j, j + 1);
-            }
+  };
+  
+  const bubbleSort = vector => {
+    for (let i = 0; i < vector.length; i++) {
+      for (let j = 0; j < vector.length - i - 1; j++) {
+        if (vector[j] > vector[j + 1]) {
+          swap(vector, j, j + 1);
         }
+      }
     }
-    return arr;
-};
-
-const selectionSort = arr => {
-    for (let i = 0; i < arr.length - 1; i++) {
-        let minIndex = i;
-        for (let j = i + 1; j < arr.length; j++) {
-            if (arr[j] < arr[minIndex]) {
-                minIndex = j;
-            }
+  };
+  
+  const selectionSort = vector => {
+    for (let i = 0; i < vector.length - 1; i++) {
+      let minIndex = i;
+      for (let j = i + 1; j < vector.length; j++) {
+        if (vector[j] < vector[minIndex]) {
+          minIndex = j;
         }
-        if (minIndex !== i) {
-            swap(arr, i, minIndex);
-        }
+      }
+      if (minIndex !== i) {
+        swap(vector, i, minIndex);
+      }
     }
-    return arr;
-};
-
-const quickSort = (arr, start, end) => {
-    if (start < end) {
-        let pivotIndex = particionamento(arr, start, end);
-        quickSort(arr, start, pivotIndex - 1);
-        quickSort(arr, pivotIndex + 1, end);
+  };
+  
+  const quickSort = (vector, start = 0, end = vector.length - 1) => {
+    if (start >= end) {
+      return;
     }
-    return arr;
-};
-
-const particionamento = (arr, start, end) => {
-    let pivot = arr[end];
+  
+    let pivotIndex = particionamento(vector, start, end);
+    quickSort(vector, start, pivotIndex - 1);
+    quickSort(vector, pivotIndex + 1, end);
+  };
+  
+  const particionamento = (vector, start, end, pivot = vector[end]) => {
     let i = start - 1;
     for (let j = start; j <= end - 1; j++) {
-        if (arr[j] <= pivot) {
-            i++;
-            swap(arr, i, j);
-        }
+      if (vector[j] <= pivot) {
+        i++;
+        swap(vector, i, j);
+      }
     }
-    swap(arr, i + 1, end);
+    swap(vector, i + 1, end);
     return i + 1;
-};
+  };
