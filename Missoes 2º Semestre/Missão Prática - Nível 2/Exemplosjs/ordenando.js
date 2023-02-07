@@ -1,79 +1,57 @@
-//Funçao SWAP para trocar posiçoes
-function swap(arr, posicao1, posicao2) {
-    [arr[posicao1], arr[posicao2]] = [arr[posicao2], arr[posicao1]];
-}
+const swap = (arr, i, j) => [arr[i], arr[j]] = [arr[j], arr[i]];
 
-// Funçao Shuffle para embaralhar elementos
-function Shuffle(arr, n){
-    for (let i = 0; i < n; i++){
-        let randomIndex = math.floor(Math.random() * arr.length)
-        [arr[i], arr[randomIndex]] = [arr[randomIndex], arr[i]]
-
+const shuffle = (arr, n) => {
+    for (let i = 0; i < n; i++) {
+        let j = Math.floor(Math.random() * arr.length);
+        swap(arr, i, j);
     }
-}
+    return arr;
+};
 
-
-// Funçao BubbleSort para organizar os elementos em ordem
-function bubbleSort(arr){
-    let n = arr.length
-    for (let i = 0; i < n - 1; i++){
-        for (let j = 0; j < n - i - 1; j++){
-            if (arr[j] > arr[j + 1]){
-                let temporaria = arr[j]
-                arr[j] = arr[j + 1]
-                arr[j + 1] = temporaria
+const bubbleSort = arr => {
+    for (let i = 0; i < arr.length; i++) {
+        for (let j = 0; j < arr.length - i - 1; j++) {
+            if (arr[j] > arr[j + 1]) {
+                swap(arr, j, j + 1);
             }
         }
     }
-    return arr
-}
+    return arr;
+};
 
-// Funçao Selection Sort para ordenar elementos
-function selectionSort(arr){
-    let n = arr.length
-    for(let i = 0; i < n - 1; i++){
-        let minindex = i
-        for (let j = i + 1; j < n; j++){
-            if (arr[j] < arr[minindex]){
-                minindex = j
+const selectionSort = arr => {
+    for (let i = 0; i < arr.length - 1; i++) {
+        let minIndex = i;
+        for (let j = i + 1; j < arr.length; j++) {
+            if (arr[j] < arr[minIndex]) {
+                minIndex = j;
             }
         }
-        let temporaria = arr[minindex]
-        arr[minindex] = arr[i]
-        arr[i] = temporaria
+        if (minIndex !== i) {
+            swap(arr, i, minIndex);
+        }
     }
-    return arr
-}
+    return arr;
+};
 
-//Funçao QuickSort para ordenar os vetores
-
-function quickSort(arr, start, end) {
-    if (start >= end) {
-      return;
+const quickSort = (arr, start, end) => {
+    if (start < end) {
+        let pivotIndex = particionamento(arr, start, end);
+        quickSort(arr, start, pivotIndex - 1);
+        quickSort(arr, pivotIndex + 1, end);
     }
-    
-    let pivotIndex = partition(arr, start, end);
-    quickSort(arr, start, pivotIndex - 1);
-    quickSort(arr, pivotIndex + 1, end);
-  }
-  
-  function partition(arr, start, end) {
+    return arr;
+};
+
+const particionamento = (arr, start, end) => {
     let pivot = arr[end];
-    let pivotIndex = start;
-    
-    for (let i = start; i < end; i++) {
-      if (arr[i] < pivot) {
-        swap(arr, i, pivotIndex);
-        pivotIndex++;
-      }
+    let i = start - 1;
+    for (let j = start; j <= end - 1; j++) {
+        if (arr[j] <= pivot) {
+            i++;
+            swap(arr, i, j);
+        }
     }
-    
-    swap(arr, pivotIndex, end);
-    return pivotIndex;
-  }
-  
-  function swap(arr, i, j) {
-    let temp = arr[i];
-    arr[i] = arr[j];
-    arr[j] = temp;
-  }
+    swap(arr, i + 1, end);
+    return i + 1;
+};
