@@ -1,26 +1,24 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
     <head>
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
-        
-        
         <title>Catálago de Receitas</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
     </head>
-    <body  onload="preencheCatalogo()">
-      <main>
-        <div class="container-fluid bg-warning">
-          <div id="pnlCatalogo" style="display: flex; flex-wrap: wrap;">
+    <body  onload="preencheCatalogo()" style="background-color: bg-warning">
+      <div class="container-fluid">
+        <h1 class="text-center">Catálogo de Receeita</h1>
+        <div id="pnlCatalogo" class="d-flex flex-wrap">
+          
 
-
-          </div>
         </div>
-
-      </main>
+      </div>
       <script>
-          let receita = [ { 
+
+          let receita = [ 
+          { 
             "titulo": "Bolo de chocolate",
             "imagem": "https://w7.pngwing.com/pngs/517/494/png-transparent-chocolate-cake-cake-chocolate-dessert.png",
             "preparo": "Pré-aqueça o forno a 180°C. Em uma tigela, misture os ingredientes secos. Adicione os ingredientes líquidos e misture bem. Despeje a massa em uma forma untada e leve ao forno por 35 minutos. Sirva quente.",
@@ -40,53 +38,53 @@
           }
         ]
 
-        function getListaIngredientes(receita){
-          let getListaIngredientes = '<ul>'
-
-          getListaIngredientes += receita.ingredientes.map(ingrediente =>`<li>${ingrediente}</li>` ).join('')  
-
-          getListaIngredientes += '</ul>'
-          return getListaIngredientes
-        }
+        function getListaIngredientes(receita) {
+          let ingredientes = ""
+          for ( let i = 0; i < receita.ingredientes.length; i++){
+            ingredientes  += "<li>" + receita.ingredientes[i] + "</li>"
+          }
+          return "<ul>" + ingredientes + "</ul>"
+        }  
           
 
 
-        function getCard(receita){
-          let card = document.createElement("div")
-          card.classList.add("card")
-
-          let img = document.createElement("img")
-          img.src ="https://w7.pngwing.com/pngs/517/494/png-transparent-chocolate-cake-cake-chocolate-dessert.png"
-          
-          card.appendChild(img)
-
-          let info = document.createElement("div")
-          info.classList.add("info")
-
-          let titulo = document.createElement("h2")
-          titulo.textContent = receita.titulo
-          info.appendChild(titulo)
-
-          let preparo = document.createElement("p")
-          preparo.textContent = receita.preparo
-          info.appendChild(preparo)
-
-          let ingredientes = getListaIngredientes(receita)
-          info.appendChild(ingredientes)
-
-          card.appendChild(info)
-          return card
-
+        function getCard(receita) {
+          return `
+            <div id="pnlCatalogo">
+              <img src="${receita.imagem}" alt="${receita.titulo}">
+              <h2>${receita.titulo}</h2>
+              <p>Ingredientes:</p>
+              ${getListaIngredientes(receita)}
+              <p>Preparo:</p>
+              <p>${receita.preparo}</P>
+            </div>
+          `     
         }
+         
 
         function preencheCatalogo(){
-          let catalogo = document.querySelector("#´pnlCatalogo")
-          for (let i = 0; i < receita.length; i++){
-            let card = getCard(receita[i])
-            catalogo.appendChild(card)
+          let receita = [ 
+          { 
+            "titulo": "Bolo de chocolate",
+            "imagem": "https://w7.pngwing.com/pngs/517/494/png-transparent-chocolate-cake-cake-chocolate-dessert.png",
+            "preparo": "Pré-aqueça o forno a 180°C. Em uma tigela, misture os ingredientes secos. Adicione os ingredientes líquidos e misture bem. Despeje a massa em uma forma untada e leve ao forno por 35 minutos. Sirva quente.",
+            "ingredientes": [  "2 xícaras de açúcar",      "1 e 3/4 xícaras de farinha de trigo",      "3/4 xícara de cacau em pó",      "1 colher de sopa de fermento em pó",      "1/2 colher de sopa de sal",      "2 ovos",      "1 xícara de leite",      "1/2 xícara de óleo"]
+          },
+          {
+            "titulo": "Donuts",
+            "imagem": "https://static.wixstatic.com/media/2cd43b_1cf1d698188a48e39f9c571f4036e0d5~mv2.png/v1/fill/w_320,h_264,q_90/2cd43b_1cf1d698188a48e39f9c571f4036e0d5~mv2.png",
+            "preparo": "Em um recipiente, misture o fermento, o açúcar, 4 colheres (sopa) de Leite NINHO e 1 xícara (chá) da farinha de trigo, formando uma massa bem mole. Deixe crescer por 15 minutos e junte a manteiga, o Leite NINHO restante, os ovos e o sal.",
+            "ingredientes": ["2 tabletes de fermento biológico (30 g)", "Meia xícara (chá) de açúcar", "4 xícaras (chá) de farinha de trigo"]
+          },
+          {
+            "titulo": "Bolo de fubá",
+            "imagem": "https://cdn.lojazmart.com/media/catalog/product/cache/1/image/650x/040ec09b1e35df139433887a97daa66f/b/o/bolo_de_fuba.png",
+            "preparo": "Coloque os ovos, óleo, leite e açúcar no copo acessório liquidificador do Processador de Alimentos Turbo Chef Mondial. Bata por 1 minuto em velocidade alta, em seguida acrescente o fubá e a farinha e bata em velocidade média até ficar homogêneo",
+            "ingredientes": ["4 ovos", "½ xícara de óleo", "1 xícara de chá de leite morno"]
           }
-        }
-
+        ]
+        }    
+         
         
 
       </script>
