@@ -39,52 +39,43 @@
         ]
 
         function getListaIngredientes(receita) {
-          let ingredientes = ""
-          for ( let i = 0; i < receita.ingredientes.length; i++){
-            ingredientes  += "<li>" + receita.ingredientes[i] + "</li>"
-          }
-          return "<ul>" + ingredientes + "</ul>"
-        }  
+          let ingredientes = "<ul>"
+          lista += receita.ingredientes.map(ingrediente => `<li>${ingrediente}</li>`).reduce((prev, curr) => prev + curr, "")
+          lista += "</ul>"
+          return lista
+        }
+          
           
 
 
         function getCard(receita) {
+          const listaIngredientes = getListaIngredientes(receita);
           return `
-            <div id="pnlCatalogo">
-              <img src="${receita.imagem}" alt="${receita.titulo}">
-              <h2>${receita.titulo}</h2>
-              <p>Ingredientes:</p>
-              ${getListaIngredientes(receita)}
-              <p>Preparo:</p>
-              <p>${receita.preparo}</P>
+            <div class="card" style="width: 250px;">
+              <img src="${receita.imagem}" class="card-img-top" alt="${receita.titulo}">
+              <div class="card-body">
+                <h5 class="card-title">${receita.titulo}</h5>
+                <div class="card-text">
+                  <ul>${listaIngredientes}</ul>
+                  <hr>
+                  <p>${receita.preparo}</p>
+                </div>
+              </div>
             </div>
-          `     
+          `;
         }
+
+          
          
 
-        function preencheCatalogo(){
-          let receita = [ 
-          { 
-            "titulo": "Bolo de chocolate",
-            "imagem": "https://w7.pngwing.com/pngs/517/494/png-transparent-chocolate-cake-cake-chocolate-dessert.png",
-            "preparo": "Pré-aqueça o forno a 180°C. Em uma tigela, misture os ingredientes secos. Adicione os ingredientes líquidos e misture bem. Despeje a massa em uma forma untada e leve ao forno por 35 minutos. Sirva quente.",
-            "ingredientes": [  "2 xícaras de açúcar",      "1 e 3/4 xícaras de farinha de trigo",      "3/4 xícara de cacau em pó",      "1 colher de sopa de fermento em pó",      "1/2 colher de sopa de sal",      "2 ovos",      "1 xícara de leite",      "1/2 xícara de óleo"]
-          },
-          {
-            "titulo": "Donuts",
-            "imagem": "https://static.wixstatic.com/media/2cd43b_1cf1d698188a48e39f9c571f4036e0d5~mv2.png/v1/fill/w_320,h_264,q_90/2cd43b_1cf1d698188a48e39f9c571f4036e0d5~mv2.png",
-            "preparo": "Em um recipiente, misture o fermento, o açúcar, 4 colheres (sopa) de Leite NINHO e 1 xícara (chá) da farinha de trigo, formando uma massa bem mole. Deixe crescer por 15 minutos e junte a manteiga, o Leite NINHO restante, os ovos e o sal.",
-            "ingredientes": ["2 tabletes de fermento biológico (30 g)", "Meia xícara (chá) de açúcar", "4 xícaras (chá) de farinha de trigo"]
-          },
-          {
-            "titulo": "Bolo de fubá",
-            "imagem": "https://cdn.lojazmart.com/media/catalog/product/cache/1/image/650x/040ec09b1e35df139433887a97daa66f/b/o/bolo_de_fuba.png",
-            "preparo": "Coloque os ovos, óleo, leite e açúcar no copo acessório liquidificador do Processador de Alimentos Turbo Chef Mondial. Bata por 1 minuto em velocidade alta, em seguida acrescente o fubá e a farinha e bata em velocidade média até ficar homogêneo",
-            "ingredientes": ["4 ovos", "½ xícara de óleo", "1 xícara de chá de leite morno"]
-          }
-        ]
-        }    
-         
+        function preencheCatalogo() {
+          // 1. Obter a referência da div pnlCatalogo no DOM
+          const pnlCatalogo = document.getElementById("pnlCatalogo")
+          const html = receita.map(getCard).reduce((acc, curr) => acc + curr, "")
+          pnlCatalogo.innerHTML = html
+        }
+        
+        
         
 
       </script>
