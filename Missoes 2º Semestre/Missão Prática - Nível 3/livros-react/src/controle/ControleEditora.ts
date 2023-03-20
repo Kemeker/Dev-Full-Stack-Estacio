@@ -7,7 +7,7 @@ let editoras: Array<Editora> = [
     {codEditora: 3, nome: "Editora C"},
 ]
 
-class ControleEditora{
+export class ControleEditora{
     public getEditoras(): Array<Editora> {
         return editoras
 
