@@ -3,15 +3,25 @@ import { ControleLivros } from "../controle/ControleLivros";
 import { ControleEditora } from "../controle/ControleEditora";
 import { Livro } from "../modelo/Livro";
 
-export const LivroLista: React.FC = () => {
+function LivroLista() {
   const [livros, setLivros] = useState<Livro[]>([]);
   const controleLivro = new ControleLivros();
   const controleEditora = new ControleEditora();
 
+  export const LivroLista: React.FC = () => {
+    const [livros, setLivros] = useState<Livro[]>([]);
+    const controleLivro = new ControleLivros();
+    const controleEditora = new ControleEditora();
+  
   useEffect(() => {
     setLivros(controleLivro.obterLivros());
   }, []);
-
+  
+  const excluirLivro = (codigo: number) => {
+    controleLivro.excluir(codigo);
+    setLivros(controleLivro.obterLivros());
+  };
+  
   return (
     <div>
       <h1>Livros</h1>
@@ -27,26 +37,10 @@ export const LivroLista: React.FC = () => {
         </thead>
         <tbody>
           {livros.map((livro) => (
-            <tr key={livro.codigo}>
-              <td>{livro.codigo}</td>
-              <td>{livro.titulo}</td>
-              <td>{controleEditora.getNomeEditora(livro.codEditora)}</td>
-              <td>{livro.autores.join(", ")}</td>
-              <td>
-                <button
-                  className="btn btn-danger"
-                  onClick={() => {
-                    controleLivro.excluir(livro.codigo);
-                    setLivros(controleLivro.obterLivros());
-                  }}
-                >
-                  Excluir
-                </button>
-              </td>
-            </tr>
+            <LinhaLivro key={livro.codigo} livro={livro} excluir={excluirLivro} />
           ))}
         </tbody>
       </table>
     </div>
   );
-};
+}
