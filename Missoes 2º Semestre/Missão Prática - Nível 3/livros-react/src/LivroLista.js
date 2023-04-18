@@ -1,46 +1,78 @@
 import React, { useState, useEffect } from "react";
 import { ControleLivros } from "../controle/ControleLivros";
 import { ControleEditora } from "../controle/ControleEditora";
-import { Livro } from "../modelo/Livro"
 
-function LivroLista() {
-  const [livros, setLivros] = useState<Livro[]>([]);
-  const controleLivro = new ControleLivros();
+
+function LinhaLivro(props) {
+  const { livro, excluir } = props;
   const controleEditora = new ControleEditora();
+  const nomeEditora = controleEditora.getNomeEditora(livro.codEditora);
 
-  export const LivroLista: React.FC = () => {
-    const [livros, setLivros] = useState<Livro[]>([]);
-    const controleLivro = new ControleLivros();
-    const controleEditora = new ControleEditora();
-  
-  useEffect(() => {
-    setLivros(controleLivro.obterLivros());
-  }, []);
-}
-  const excluirLivro = (codigo: number) => {
-    controleLivro.excluir(codigo);
-    setLivros(controleLivro.obterLivros());
-  };
-  
+  function handleExcluir() {
+    excluir(livro.codigo);
+  }
   return (
-    <div>
-      <h1>Livros</h1>
-      <table className="table">
+    <tr>
+      <td>
+        <button onClick={handleExcluir}>Excluir</button>
+      </td>
+      <td>{livro.codigo}</td>
+      <td>{livro.titulo}</td>
+      <td>{livro.resumo}</td>
+      <td>{nomeEditora}</td>
+      <td>
+        <ul>
+          {livro.autores.map((autor, index) => (
+            <li key={index}>{autor}</li>
+          ))}
+        </ul>
+      </td>
+  </tr>
+
+  )
+}
+
+export default function LivroLista() {
+  const [livros, setLivros] = useState([]);
+  const [carregado, setCarregado] = useState(false);
+  const controleLivro = new ControleLivro();
+
+  useEffect(() => {
+    async function carregarLivros() {
+      const livros = await controleLivro.obterLivros();
+      setLivros(livros);
+      setCarregado(true);
+    }
+    if (!carregado) {
+      carregarLivros();
+    }
+  }, [carregado]);
+
+  function excluir(codigo) {
+    controleLivro.excluir(codigo);
+    setCarregado(false);
+  }
+  return (
+    <main>
+      <h1>Lista de Livros</h1>
+      <table>
         <thead>
           <tr>
+            <th></th>
             <th>Código</th>
             <th>Título</th>
+            <th>Resumo</th>
             <th>Editora</th>
             <th>Autores</th>
-            <th>Ações</th>
           </tr>
         </thead>
         <tbody>
           {livros.map((livro) => (
-            <LinhaLivro key={livro.codigo} livro={livro} excluir={excluirLivro} />
+            <LinhaLivro key={livro.codigo} livro={livro} excluir={excluir} />
           ))}
         </tbody>
       </table>
-    </div>
-  );
+  </main>
+
+  )
 }

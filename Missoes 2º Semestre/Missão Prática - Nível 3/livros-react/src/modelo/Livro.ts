@@ -1,3 +1,5 @@
+import Editora from "./Editora"
+
 class Livro {
     codEditora: number
     codigo: number
@@ -15,3 +17,4 @@ class Livro {
     }
 }
 
+export default Livro

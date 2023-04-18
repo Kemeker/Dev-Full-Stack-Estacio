@@ -8,3 +8,5 @@ class Editora{
 
  }      
 }
+
+export default Editora;
