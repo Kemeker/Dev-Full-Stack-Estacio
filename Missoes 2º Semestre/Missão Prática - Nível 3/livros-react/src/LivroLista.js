@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { ControleLivros } from "../controle/ControleLivros";
 import { ControleEditora } from "../controle/ControleEditora";
-import { Livro } from "../modelo/Livro";
+import { Livro } from "../modelo/Livro"
 
 function LivroLista() {
   const [livros, setLivros] = useState<Livro[]>([]);
@@ -16,7 +16,7 @@ function LivroLista() {
   useEffect(() => {
     setLivros(controleLivro.obterLivros());
   }, []);
-  
+}
   const excluirLivro = (codigo: number) => {
     controleLivro.excluir(codigo);
     setLivros(controleLivro.obterLivros());
