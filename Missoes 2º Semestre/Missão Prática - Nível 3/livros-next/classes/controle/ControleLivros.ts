@@ -1,7 +1,5 @@
 import Livro from "../modelo/Livro"
 
-
-// Define a variável livros como um Array<Livro>
 const livros: Array<Livro> = [
     {
         codigo: 1,
@@ -27,20 +25,20 @@ const livros: Array<Livro> = [
     },
 ]
 
-class ControleLivros{
+class ControleLivros {
   // Implementa o método obterLivros, com o retorno do vetor livros
   obterLivros(): Array<Livro> {
     return livros
   }
   
   // Implementa o método incluir, recebendo um objeto do tipo Livro e adicionando-o ao vetor de livros
-  incluir(Livro: Livro): void{
+  incluir(livro: Livro): void {
     const novoCodigo = livros.reduce((max, livro) => Math.max(max, livro.codigo), 0) + 1;
     livros.push({ ...livro, codigo: novoCodigo });
   }
 
-   // Implementa o método excluir, removendo o livro com o código fornecido do vetor de livros
-   excluir(codigo: number): void {
+  // Implementa o método excluir, removendo o livro com o código fornecido do vetor de livros
+  excluir(codigo: number): void {
     const index = livros.findIndex((livro) => livro.codigo === codigo);
     if (index !== -1) {
       livros.splice(index, 1);
