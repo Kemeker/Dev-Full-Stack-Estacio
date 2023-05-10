@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import ControleLivros from '../controle/ControleLivros';
-import ControleEditoras from '../controle/ControleEditoras';
-import LinhaLivro from './LinhaLivro';
+import ControleLivros from './controle/ControleLivros';
+import ControleEditoras from './controle/ControleEditoras';
+
+
+
 
 const controleLivro = new ControleLivros();
 const controleEditora = new ControleEditoras();
@@ -10,20 +12,43 @@ const LivroLista = () => {
   const [livros, setLivros] = useState([]);
   const [carregado, setCarregado] = useState(false);
 
-  const handleExcluirLivro = (codigo) => {
+  const excluirLivro = (codigo) => {
     controleLivro.excluir(codigo);
     setCarregado(false); // Força o redesenho da página após a exclusão
   };
 
   useEffect(() => {
-    const carregarLivros = () => {
+    const obterLivros = () => {
       const livros = controleLivro.obterLivros();
       setLivros(livros);
       setCarregado(true);
     };
 
-    carregarLivros();
+    obterLivros();
   }, []);
+
+  const LinhaLivro = ({ livro }) => {
+    const nomeEditora = controleEditora.getNomeEditora(livro.codEditora);
+
+    return (
+      <tr>
+        <td>
+          <button onClick={() => excluirLivro(livro.codigo)}>Excluir</button>
+        </td>
+        <td>{livro.codigo}</td>
+        <td>{livro.titulo}</td>
+        <td>{livro.resumo}</td>
+        <td>
+          <ul>
+            {livro.autores.map((autor, index) => (
+              <li key={index}>{autor}</li>
+            ))}
+          </ul>
+        </td>
+        <td>{nomeEditora}</td>
+      </tr>
+    );
+  };
 
   return (
     <div>
@@ -42,13 +67,9 @@ const LivroLista = () => {
               </tr>
             </thead>
             <tbody>
-                {livros.map((livro) => (
-                    <LinhaLivro
-                        key={livro.codigo}
-                        livro={livro}
-                        excluir={excluir}
-                    />
-                ))}
+              {livros.map((livro) => (
+                <LinhaLivro key={livro.codigo} livro={livro} />
+              ))}
             </tbody>
           </table>
         ) : (
@@ -60,6 +81,7 @@ const LivroLista = () => {
 };
 
 export default LivroLista;
+
 
 
 

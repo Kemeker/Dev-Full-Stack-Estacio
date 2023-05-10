@@ -1,5 +1,5 @@
 import React from 'react';
-import LivroLista from './LivroLista.js';
+import LivroLista from './LivroLista';
 
 const App = () => {
   return (

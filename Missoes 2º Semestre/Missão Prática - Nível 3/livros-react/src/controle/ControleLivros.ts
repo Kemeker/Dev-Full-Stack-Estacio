@@ -1,4 +1,4 @@
-import Livro from "../../modelo/Livro"
+import Livro from "../modelo/Livro"
 
 const livros: Array<Livro> = [
     {
