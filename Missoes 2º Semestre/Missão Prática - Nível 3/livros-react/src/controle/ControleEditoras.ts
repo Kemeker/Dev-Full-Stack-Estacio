@@ -2,20 +2,20 @@ import Editora from "../modelo/Editora"
 
 
 const editoras: Array<Editora> = [
-    {codEditora: 1, nome: "Editora 1"},
-    {codEditora: 2, nome: "Editora 2"},
-    {codEditora: 3, nome: "Editora 3"},
+    {codEditora: 1, nome: "Wolters Kluwer"},
+    {codEditora: 2, nome: "Pearson"},
+    {codEditora: 3, nome: "Grupo Planeta"},
 ]
 
 
-// Implementa o método getEditoras, com o retorno do vetor editoras
-class ControleEditora{
+
+class ControleEditoras{
     getEditoras(): Array<Editora> {
         return editoras
     }
 
 
-    // Implementa o método getNomeEditora, recebendo codEditora e retornando o nome da editora
+    
     getNomeEditora(codEditora: number): string{
         const editora = editoras.filter((e) => e.codEditora === codEditora)[0]
         return editoras ? editora.nome : ""
@@ -24,8 +24,7 @@ class ControleEditora{
  
 }
 
-export default ControleEditora
-
+export default ControleEditoras
 
 
 
