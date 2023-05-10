@@ -1,4 +1,4 @@
-import Editora from "./Editora"
+import Editora from "../modelo/Editora"
 
 class Livro {
     codEditora: number
