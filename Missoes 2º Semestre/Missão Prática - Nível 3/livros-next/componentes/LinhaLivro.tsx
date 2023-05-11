@@ -1,6 +1,6 @@
 import React from 'react';
 import ControleEditora from '../classes/controle/ControleEditoras';
-import { Livro } from '../types/Livro';
+import  Livro  from '../classes/modelo/Livro';
 
 const controleEditora = new ControleEditora();
 
