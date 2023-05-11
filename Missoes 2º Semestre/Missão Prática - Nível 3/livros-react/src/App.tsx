@@ -1,7 +1,7 @@
 import React from 'react';
-import { BrowserRouter, Link, Routes, Route } from 'react-router-dom';
-import LivroLista from "./LivroLista"
-import LivroDados from "./LivroDados"
+import { BrowserRouter, Link, Route, Routes } from 'react-router-dom';
+import LivroLista from './LivroLista';
+import LivroDados from './LivroDados';
 
 const App = () => {
   return (
