@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import React from "react"
 import { useNavigate } from "react-router-dom"
 import LivroLista from './LivroLista';
@@ -83,3 +84,5 @@ function LivroDados() {
 }
 
 export default LivroDados;
+=======
+>>>>>>> 61fe3233b320b76b6fc48ac5620119f8ad29511c
