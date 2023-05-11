@@ -1,7 +1,7 @@
 import React from "react"
 import { useNavigate } from "react-router-dom"
-import  ControleLivro  from "../controle/controleLivro"
-import { ControleEditora } from "../controle/ControleEditora"
+import LivroLista from './LivroLista';
+
 
 function LivroDados() {
   const controleLivro = new ControladorLivros();

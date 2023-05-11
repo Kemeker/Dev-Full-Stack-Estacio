@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import { ControleLivros } from "../controle/ControleLivros";
 import { ControleEditora } from "../controle/ControleEditora";
 
-
 function LinhaLivro(props) {
   const { livro, excluir } = props;
   const controleEditora = new ControleEditora();
@@ -11,6 +10,7 @@ function LinhaLivro(props) {
   function handleExcluir() {
     excluir(livro.codigo);
   }
+
   return (
     <tr>
       <td>
@@ -27,9 +27,8 @@ function LinhaLivro(props) {
           ))}
         </ul>
       </td>
-  </tr>
-
-  )
+    </tr>
+  );
 }
 
 export default function LivroLista() {
@@ -43,18 +42,23 @@ export default function LivroLista() {
       setLivros(livros);
       setCarregado(true);
     }
+
     if (!carregado) {
       carregarLivros();
     }
   }, [carregado]);
 
-  function excluir(codigo) {
+  function handleExcluirLivro(codigo) {
     controleLivro.excluir(codigo);
     setCarregado(false);
   }
+
   return (
     <main>
       <h1>Lista de Livros</h1>
+      <button className="btn btn-danger mb-4" onClick={() => handleExcluirLivro()}>
+        Excluir Livro
+      </button>
       <table>
         <thead>
           <tr>
@@ -68,11 +72,10 @@ export default function LivroLista() {
         </thead>
         <tbody>
           {livros.map((livro) => (
-            <LinhaLivro key={livro.codigo} livro={livro} excluir={excluir} />
+            <LinhaLivro key={livro.codigo} livro={livro} excluir={handleExcluirLivro} />
           ))}
         </tbody>
       </table>
-  </main>
-
-  )
+    </main>
+  );
 }
