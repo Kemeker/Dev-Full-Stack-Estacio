@@ -3,9 +3,10 @@ import { useNavigate } from "react-router-dom";
 import ControladorLivros from "./controle/ControleLivros";
 import ControladorEditoras from "./controle/ControleEditoras";
 
+const controleLivro = new ControladorLivros();
+const controleEditora = new ControladorEditoras();
+
 function LivroDados() {
-  const controleLivro = new ControladorLivros();
-  const controleEditora = new ControladorEditoras();
   const opcoes = controleEditora.getEditoras().map((editora) => ({
     value: editora.codEditora,
     text: editora.nome,
@@ -83,6 +84,12 @@ function LivroDados() {
 }
 
 export default LivroDados;
+
+
+
+
+
+
 
 
 
