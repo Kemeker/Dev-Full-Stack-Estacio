@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import ControleLivros from './controle/ControleLivros';
 import ControleEditoras from './controle/ControleEditoras';
 
-<<<<<<< HEAD
+
 function LinhaLivro(props) {
   const { livro, excluir } = props;
   const controleEditora = new ControleEditora();
@@ -31,13 +31,13 @@ function LinhaLivro(props) {
     </tr>
   );
 }
-=======
+
 
 
 
 const controleLivro = new ControleLivros();
 const controleEditora = new ControleEditoras();
->>>>>>> 61fe3233b320b76b6fc48ac5620119f8ad29511c
+
 
 const LivroLista = () => {
   const [livros, setLivros] = useState([]);
@@ -53,7 +53,7 @@ const LivroLista = () => {
       const livros = controleLivro.obterLivros();
       setLivros(livros);
       setCarregado(true);
-<<<<<<< HEAD
+
     }
 
     if (!carregado) {
@@ -92,8 +92,8 @@ const LivroLista = () => {
     </main>
   );
 }
-=======
-    };
+
+
 
     obterLivros();
   }, []);
@@ -156,4 +156,4 @@ export default LivroLista;
 
 
 
->>>>>>> 61fe3233b320b76b6fc48ac5620119f8ad29511c
+
