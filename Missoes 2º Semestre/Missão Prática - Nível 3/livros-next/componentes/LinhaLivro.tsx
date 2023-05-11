@@ -1,15 +1,16 @@
 import React from 'react';
-import ControleEditora from '../classes/controle/ControleEditoras';
-import  Livro  from '../classes/modelo/Livro';
+import ControleEditoras from '../classes/controle/ControleEditoras';
+import Livro from '../classes/modelo/Livro';
 
-const controleEditora = new ControleEditora();
+const controleEditoras = new ControleEditoras();
 
 interface LinhaLivroProps {
   livro: Livro;
+  excluir: () => void;
 }
 
-const LinhaLivro: React.FC<LinhaLivroProps> = ({ livro }) => {
-  const editora = controleEditora.obterEditoraPorCodigo(livro.codEditora);
+export const LinhaLivro: React.FC<LinhaLivroProps> = ({ livro, excluir }) => {
+  const editora = controleEditoras.obterEditoraPorCodigo(livro.codEditora);
 
   return (
     <tr>
@@ -18,11 +19,13 @@ const LinhaLivro: React.FC<LinhaLivroProps> = ({ livro }) => {
       <td>{livro.resumo}</td>
       <td>{livro.autores.join(', ')}</td>
       <td>{editora?.nome}</td>
+      <td>
+        <button onClick={excluir} className="btn btn-danger">
+          Excluir
+        </button>
+      </td>
     </tr>
   );
-}
-
-export default LinhaLivro;
-
+};
 
 
