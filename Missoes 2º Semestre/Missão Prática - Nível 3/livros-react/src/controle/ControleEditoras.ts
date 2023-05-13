@@ -5,6 +5,7 @@ const editoras: Array<Editora> = [
     {codEditora: 1, nome: "Wolters Kluwer"},
     {codEditora: 2, nome: "Pearson"},
     {codEditora: 3, nome: "Grupo Planeta"},
+    {codEditora: 4, nome: "Abril"},
 ]
 
 

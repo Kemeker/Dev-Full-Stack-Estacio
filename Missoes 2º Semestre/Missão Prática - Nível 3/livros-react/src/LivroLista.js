@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import ControleLivros from './controle/ControleLivros';
 import ControleEditoras from './controle/ControleEditoras';
 
@@ -6,8 +6,8 @@ const LivroLista = () => {
   const [livros, setLivros] = useState([]);
   const [carregado, setCarregado] = useState(false);
 
-  const controleLivro = new ControleLivros();
-  const controleEditora = new ControleEditoras();
+  const controleLivro = useMemo(() => new ControleLivros(), []); // Utilize useMemo para memorizar o objeto controleLivro
+  const controleEditora = useMemo(() => new ControleEditoras(), []); // Utilize useMemo para memorizar o objeto controleEditora
 
   useEffect(() => {
     const carregarLivros = async () => {
@@ -19,7 +19,7 @@ const LivroLista = () => {
     if (!carregado) {
       carregarLivros();
     }
-  }, [carregado]);
+  }, [carregado, controleLivro]);
 
   const excluirLivro = (codigo) => {
     controleLivro.excluir(codigo);
@@ -78,6 +78,7 @@ const LivroLista = () => {
 };
 
 export default LivroLista;
+
 
 
 
