@@ -1,7 +1,7 @@
 import React from 'react';
 import Link from 'next/link';
 
-const Menu: React.FC = () => {
+export const Menu: React.FC = () => {
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-light">
       <div className="container-fluid">
@@ -27,4 +27,3 @@ const Menu: React.FC = () => {
   );
 };
 
-export default Menu;
