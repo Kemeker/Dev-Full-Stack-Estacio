@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import ControleEditoras from '../classes/controle/ControleEditoras';
 import Livro from '../classes/modelo/Livro';
-import styles from '../styles/Home.module.css';
+import styles from '../styles.module.css';
 import Head from 'next/head';
 import { Menu } from '../componentes/Menu';
 

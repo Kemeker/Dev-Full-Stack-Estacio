@@ -1,6 +1,6 @@
 import type { NextPage } from 'next';
 import React, { useState } from 'react';
-import styles from '../styles/Home.module.css';
+import styles from '../styles.module.css';
 import ControleEditora from '../classes/controle/ControleEditoras';
 import { useRouter } from 'next/router';
 import Head from 'next/head';
