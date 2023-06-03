@@ -1,15 +1,15 @@
-const banco = require('./conexao');
-const Schema = banco.Schema;
+const mongoose = require('mongoose');
+const { Schema } = mongoose;
 
 const LivroSchema = new Schema({
-  titulo: String,
-  autor: String,
-  genero: String
+  titulo: { type: String, required: true },
+  autor: { type: String, required: true },
+  ano: { type: Number, required: true }
 });
 
-const Livro = banco.model('livros', LivroSchema);
+module.exports = mongoose.model('Livro', LivroSchema);
 
-module.exports = Livro;
+
 
 
 
