@@ -1,9 +1,0 @@
-<project name="CadastroPOO" default="compile" basedir=".">
-    <property name="src.dir" value="src" />
-    <property name="build.dir" value="build" />
-
-    <target name="compile">
-        <mkdir dir="${build.dir}" />
-        <javac srcdir="${src.dir}" destdir="${build.dir}" />
-    </target>
-</project>
