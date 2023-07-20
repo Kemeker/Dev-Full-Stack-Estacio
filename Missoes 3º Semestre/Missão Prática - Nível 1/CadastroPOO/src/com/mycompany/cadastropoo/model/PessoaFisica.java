@@ -1,6 +1,8 @@
 package com.mycompany.cadastropoo.model;
 
-public class PessoaFisica extends Pessoa {
+import java.io.Serializable;
+
+public class PessoaFisica extends Pessoa implements Serializable {
     private String cpf;
     private int idade;
 
@@ -14,7 +16,21 @@ public class PessoaFisica extends Pessoa {
     }
 
     // Getters e Setters
-    // ...
+    public String getCpf() {
+        return cpf;
+    }
+
+    public void setCpf(String cpf) {
+        this.cpf = cpf;
+    }
+
+    public int getIdade() {
+        return idade;
+    }
+
+    public void setIdade(int idade) {
+        this.idade = idade;
+    }
 
     @Override
     public void exibir() {
@@ -23,4 +39,3 @@ public class PessoaFisica extends Pessoa {
         System.out.println("Idade: " + idade);
     }
 }
-

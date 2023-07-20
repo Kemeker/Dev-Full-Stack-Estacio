@@ -22,4 +22,3 @@ public class Pessoa implements Serializable {
         System.out.println("Nome: " + nome);
     }
 }
-
