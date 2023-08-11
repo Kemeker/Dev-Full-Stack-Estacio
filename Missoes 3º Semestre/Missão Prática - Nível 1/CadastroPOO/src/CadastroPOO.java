@@ -1,4 +1,4 @@
-package cadastropoo; // Verifique se o pacote está correto, ou ajuste-o conforme o seu projeto.
+package cadastropoo; 
 
 import com.mycompany.cadastropoo.model.PessoaFisica;
 import com.mycompany.cadastropoo.model.PessoaFisicaRepo;
@@ -104,26 +104,210 @@ public class CadastroPOO {
     }
 
     private static void alterar(Scanner scanner, PessoaFisicaRepo repoPessoaFisica, PessoaJuridicaRepo repoPessoaJuridica) {
-        // Implemente a lógica para alteração de pessoas físicas e jurídicas
-    }
+    System.out.println("Digite o ID da pessoa que deseja alterar:");
+    int id = scanner.nextInt();
+    scanner.nextLine(); // Limpar o buffer do scanner
 
-    private static void excluir(Scanner scanner, PessoaFisicaRepo repoPessoaFisica, PessoaJuridicaRepo repoPessoaJuridica) {
-        // Implemente a lógica para exclusão de pessoas físicas e jurídicas
-    }
+    System.out.println("Selecione o tipo de pessoa:");
+    System.out.println("1 - Pessoa Fisica");
+    System.out.println("2 - Pessoa Juridica");
+    System.out.print("Opcao: ");
+    int tipoPessoa = scanner.nextInt();
+    scanner.nextLine(); // Limpar o buffer do scanner
 
-    private static void exibirPorId(Scanner scanner, PessoaFisicaRepo repoPessoaFisica, PessoaJuridicaRepo repoPessoaJuridica) {
-        // Implemente a lógica para exibir os dados de uma pessoa física ou jurídica pelo ID
-    }
+    if (tipoPessoa == 1) {
+        // Alteração de Pessoa Física
+        PessoaFisica pessoaFisica = repoPessoaFisica.buscarPorId(id);
+        if (pessoaFisica != null) {
+            System.out.print("Digite o novo nome: ");
+            String novoNome = scanner.nextLine();
+            System.out.print("Digite o novo CPF: ");
+            String novoCpf = scanner.nextLine();
+            System.out.print("Digite a nova idade: ");
+            int novaIdade = scanner.nextInt();
+            scanner.nextLine(); // Limpar o buffer do scanner
 
-    private static void exibirTodos(Scanner scanner, PessoaFisicaRepo repoPessoaFisica, PessoaJuridicaRepo repoPessoaJuridica) {
-        // Implemente a lógica para exibir todos os dados de pessoas físicas ou jurídicas
-    }
+            pessoaFisica.setNome(novoNome);
+            pessoaFisica.setCpf(novoCpf);
+            pessoaFisica.setIdade(novaIdade);
 
-    private static void salvarDados(Scanner scanner, PessoaFisicaRepo repoPessoaFisica, PessoaJuridicaRepo repoPessoaJuridica) {
-        // Implemente a lógica para salvar os dados em arquivos
-    }
+            repoPessoaFisica.atualizar(pessoaFisica);
+            System.out.println("Pessoa Física alterada com sucesso!");
+        } else {
+            System.out.println("Pessoa não encontrada com o ID especificado.");
+        }
+    } else if (tipoPessoa == 2) {
+        // Alteração de Pessoa Jurídica
+        PessoaJuridica pessoaJuridica = repoPessoaJuridica.buscarPorId(id);
+        if (pessoaJuridica != null) {
+            System.out.print("Digite o novo nome: ");
+            String novoNome = scanner.nextLine();
+            System.out.print("Digite o novo CNPJ: ");
+            String novoCnpj = scanner.nextLine();
 
-    private static void recuperarDados(Scanner scanner, PessoaFisicaRepo repoPessoaFisica, PessoaJuridicaRepo repoPessoaJuridica) {
-        // Implemente a lógica para recuperar os dados de arquivos
+            pessoaJuridica.setNome(novoNome);
+            pessoaJuridica.setCnpj(novoCnpj);
+
+            repoPessoaJuridica.atualizar(pessoaJuridica);
+            System.out.println("Pessoa Jurídica alterada com sucesso!");
+        } else {
+            System.out.println("Pessoa não encontrada com o ID especificado.");
+        }
+    } else {
+        System.out.println("Opção inválida!");
     }
 }
+
+
+    private static void excluir(Scanner scanner, PessoaFisicaRepo repoPessoaFisica, PessoaJuridicaRepo repoPessoaJuridica) {
+    System.out.println("Digite o ID da pessoa que deseja excluir:");
+    int id = scanner.nextInt();
+    scanner.nextLine(); // Limpar o buffer do scanner
+
+    System.out.println("Selecione o tipo de pessoa:");
+    System.out.println("1 - Pessoa Fisica");
+    System.out.println("2 - Pessoa Juridica");
+    System.out.print("Opcao: ");
+    int tipoPessoa = scanner.nextInt();
+    scanner.nextLine(); // Limpar o buffer do scanner
+
+    if (tipoPessoa == 1) {
+        // Exclusão de Pessoa Física
+        PessoaFisica pessoaFisica = repoPessoaFisica.buscarPorId(id);
+        if (pessoaFisica != null) {
+            repoPessoaFisica.excluir(pessoaFisica);
+            System.out.println("Pessoa Física excluída com sucesso!");
+        } else {
+            System.out.println("Pessoa não encontrada com o ID especificado.");
+        }
+    } else if (tipoPessoa == 2) {
+        // Exclusão de Pessoa Jurídica
+        PessoaJuridica pessoaJuridica = repoPessoaJuridica.buscarPorId(id);
+        if (pessoaJuridica != null) {
+            repoPessoaJuridica.excluir(pessoaJuridica);
+            System.out.println("Pessoa Jurídica excluída com sucesso!");
+        } else {
+            System.out.println("Pessoa não encontrada com o ID especificado.");
+        }
+    } else {
+        System.out.println("Opção inválida!");
+    }
+}
+
+
+    private static void exibirPorId(Scanner scanner, PessoaFisicaRepo repoPessoaFisica, PessoaJuridicaRepo repoPessoaJuridica) {
+    System.out.println("Digite o ID da pessoa que deseja exibir:");
+    int id = scanner.nextInt();
+    scanner.nextLine(); // Limpar o buffer do scanner
+
+    System.out.println("Selecione o tipo de pessoa:");
+    System.out.println("1 - Pessoa Fisica");
+    System.out.println("2 - Pessoa Juridica");
+    System.out.print("Opcao: ");
+    int tipoPessoa = scanner.nextInt();
+    scanner.nextLine(); // Limpar o buffer do scanner
+
+    if (tipoPessoa == 1) {
+        // Exibição de Pessoa Física
+        PessoaFisica pessoaFisica = repoPessoaFisica.buscarPorId(id);
+        if (pessoaFisica != null) {
+            pessoaFisica.exibir();
+        } else {
+            System.out.println("Pessoa não encontrada com o ID especificado.");
+        }
+    } else if (tipoPessoa == 2) {
+        // Exibição de Pessoa Jurídica
+        PessoaJuridica pessoaJuridica = repoPessoaJuridica.buscarPorId(id);
+        if (pessoaJuridica != null) {
+            pessoaJuridica.exibir();
+        } else {
+            System.out.println("Pessoa não encontrada com o ID especificado.");
+        }
+    } else {
+        System.out.println("Opção inválida!");
+    }
+}
+
+    private static void exibirTodos(Scanner scanner, PessoaFisicaRepo repoPessoaFisica, PessoaJuridicaRepo repoPessoaJuridica) {
+    System.out.println("Selecione o tipo de pessoa:");
+    System.out.println("1 - Pessoa Fisica");
+    System.out.println("2 - Pessoa Juridica");
+    System.out.print("Opcao: ");
+    int tipoPessoa = scanner.nextInt();
+    scanner.nextLine(); // Limpar o buffer do scanner
+
+    if (tipoPessoa == 1) {
+        // Exibição de todas as Pessoas Físicas
+        System.out.println("Pessoas Físicas cadastradas:");
+        for (PessoaFisica pessoaFisica : repoPessoaFisica.getListaPessoas()) {
+            pessoaFisica.exibir();
+            System.out.println("----------------------");
+        }
+    } else if (tipoPessoa == 2) {
+        // Exibição de todas as Pessoas Jurídicas
+        System.out.println("Pessoas Jurídicas cadastradas:");
+        for (PessoaJuridica pessoaJuridica : repoPessoaJuridica.getListaPessoas()) {
+            pessoaJuridica.exibir();
+            System.out.println("----------------------");
+        }
+    } else {
+        System.out.println("Opção inválida!");
+    }
+}
+
+
+    private static void salvarDados(Scanner scanner, PessoaFisicaRepo repoPessoaFisica, PessoaJuridicaRepo repoPessoaJuridica) {
+    System.out.println("Selecione o tipo de pessoa:");
+    System.out.println("1 - Pessoa Fisica");
+    System.out.println("2 - Pessoa Juridica");
+    System.out.print("Opcao: ");
+    int tipoPessoa = scanner.nextInt();
+    scanner.nextLine(); // Limpar o buffer do scanner
+
+    if (tipoPessoa == 1) {
+        // Salvar dados das Pessoas Físicas em um arquivo
+        if (repoPessoaFisica.salvarDados()) {
+            System.out.println("Dados das Pessoas Físicas salvos com sucesso!");
+        } else {
+            System.out.println("Erro ao salvar os dados das Pessoas Físicas.");
+        }
+    } else if (tipoPessoa == 2) {
+        // Salvar dados das Pessoas Jurídicas em um arquivo
+        if (repoPessoaJuridica.salvarDados()) {
+            System.out.println("Dados das Pessoas Jurídicas salvos com sucesso!");
+        } else {
+            System.out.println("Erro ao salvar os dados das Pessoas Jurídicas.");
+        }
+    } else {
+        System.out.println("Opção inválida!");
+    }
+}
+
+
+    private static void recuperarDados(Scanner scanner, PessoaFisicaRepo repoPessoaFisica, PessoaJuridicaRepo repoPessoaJuridica) {
+    System.out.println("Selecione o tipo de pessoa:");
+    System.out.println("1 - Pessoa Fisica");
+    System.out.println("2 - Pessoa Juridica");
+    System.out.print("Opcao: ");
+    int tipoPessoa = scanner.nextInt();
+    scanner.nextLine(); // Limpar o buffer do scanner
+
+    if (tipoPessoa == 1) {
+        // Recuperar dados das Pessoas Físicas de um arquivo
+        if (repoPessoaFisica.recuperarDados()) {
+            System.out.println("Dados das Pessoas Físicas recuperados com sucesso!");
+        } else {
+            System.out.println("Erro ao recuperar os dados das Pessoas Físicas.");
+        }
+    } else if (tipoPessoa == 2) {
+        // Recuperar dados das Pessoas Jurídicas de um arquivo
+        if (repoPessoaJuridica.recuperarDados()) {
+            System.out.println("Dados das Pessoas Jurídicas recuperados com sucesso!");
+        } else {
+            System.out.println("Erro ao recuperar os dados das Pessoas Jurídicas.");
+        }
+    } else {
+        System.out.println("Opção inválida!");
+    }
+}
+
